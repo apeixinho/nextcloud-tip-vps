@@ -1,0 +1,26 @@
+# CVS
+.git
+.gitignore
+
+# Docker stuff
+dockerfile
+Dockerfile
+docker-compose*.yml
+docker-run*.txt
+
+# IDEs and editors
+.idea
+.vscode
+.project
+.classpath
+*.launch
+.editorconfig
+.settings/
+
+# misc
+README.md
+LICENSE
+
+# System Files
+.DS_Store
+Thumbs.db
