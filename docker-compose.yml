@@ -3,7 +3,7 @@ version: "3.7"
 services:
 
   nextcloud:
-    image: nextcloud:alpine 
+    image: nextcloud
     restart: unless-stopped
     expose:
       - ${HTTP_PORT}
