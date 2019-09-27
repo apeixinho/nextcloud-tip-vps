@@ -21,11 +21,6 @@ services:
       LETSENCRYPT_HOST: www.${VIRTUAL_HOST},${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
       LETSENCRYPT_TEST: "true"
-    healthcheck:
-      test: ["CMD", "/usr/bin/healthcheck"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
     volumes:
       - ${NEXTCLOUD_FILES_PATH:-./html}/html:/var/www/html
   
@@ -36,11 +31,6 @@ services:
       POSTGRES_DB: nextcloud
       POSTGRES_USER: ${DB_USERNAME}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-    healthcheck:
-      test: ["CMD", "/usr/bin/healthcheck"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
     volumes:
       - ${NEXTCLOUD_FILES_PATH:-./postgres/data}/postgres/data:/var/lib/postgresql/data
 
@@ -49,11 +39,6 @@ services:
     restart: unless-stopped
     environment:
       REDIS_DATABASES: 1
-    healthcheck:
-      test: ["CMD", "/usr/bin/healthcheck"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
     volumes:
       - ${NEXTCLOUD_FILES_PATH:-./redis}/redis:/var/lib/redis
 
