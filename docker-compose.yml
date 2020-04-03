@@ -44,6 +44,8 @@ services:
   nextcloud_redis:
     image: redis:alpine
     container_name: nextcloud_redis
+    sysctls:
+      net.core.somaxconn: 4096
     restart: on-failure:10
     volumes:
       - ${NEXTCLOUD_FILES_PATH:-./redis}/redis:/var/lib/redis
