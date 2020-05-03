@@ -3,7 +3,8 @@ version: "3.7"
 services:
 
   nextcloud:
-    image: nextcloud
+    build: nextcloud
+    # image: nextcloud
     container_name: nextcloud
     restart: on-failure:10
     ports:
