@@ -4,7 +4,7 @@ services:
 
   nextcloud:
     build: nextcloud
-    # image: nextcloud
+    image: nextcloud-supervisor
     container_name: nextcloud
     restart: on-failure:10
     ports:
