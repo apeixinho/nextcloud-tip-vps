@@ -3,8 +3,9 @@ version: "3.7"
 services:
 
   nextcloud:
-    build: nextcloud
-    image: nextcloud-supervisor
+    # build: nextcloud
+    # image: nextcloud-supervisor
+    image: nextcloud:fpm-alpine
     container_name: nextcloud
     restart: on-failure:10
     ports:
