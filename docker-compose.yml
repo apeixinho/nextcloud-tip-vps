@@ -6,7 +6,7 @@ services:
     # build: nextcloud
     # image: nextcloud-supervisor
     image: nextcloud:latest
-    container_name: nextcloud
+    # container_name: nextcloud
     restart: on-failure:10
     ports:
       - ${HTTP_PORT:-9099}:80
@@ -31,6 +31,19 @@ services:
     volumes:
       - ${NEXTCLOUD_FILES_PATH:-./html}/html:/var/www/html
   
+  nextcloud_cron:
+    image: nextcloud:apache
+    restart: on-failure:10
+    volumes:
+      - ${NEXTCLOUD_FILES_PATH:-./html}/html:/var/www/html
+    entrypoint: /cron.sh
+    depends_on:
+      - nextcloud_db
+      - nextcloud_redis
+    links:
+      - nextcloud_db
+      - nextcloud_redis
+
   nextcloud_db:
     image: postgres:12-alpine
     container_name: nextcloud_db
